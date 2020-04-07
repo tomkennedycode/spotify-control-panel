@@ -1,4 +1,5 @@
 ﻿using System;
+using SpotifyControlPanel.Models;
 
 namespace SpotifyControlPanel
 {
@@ -7,6 +8,15 @@ namespace SpotifyControlPanel
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            SpotifyAccessToken accessToken = GetConnection();
+        }
+
+        public static SpotifyAccessToken GetConnection()
+        {
+            SpotifyConnection connection = new SpotifyConnection();
+            SpotifyAccessToken token = connection.GetAccessToken();
+
+            return token;
         }
     }
 }
