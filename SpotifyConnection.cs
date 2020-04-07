@@ -20,7 +20,7 @@ namespace SpotifyControlPanel
             try
             {
                 SpotifyAccessToken token = new SpotifyAccessToken();
-                string url5 = "https://accounts.spotify.com/api/token";
+                string url = "https://accounts.spotify.com/api/token";
 
                 //Get details
                 //Console.WriteLine("What is the client id");
@@ -31,7 +31,7 @@ namespace SpotifyControlPanel
                 var clientsecret = "";
                 var encode_clientid_clientsecret = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", clientid, clientsecret)));
 
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url5);
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
 
                 webRequest.Method = "POST";
                 webRequest.ContentType = "application/x-www-form-urlencoded";
@@ -42,19 +42,19 @@ namespace SpotifyControlPanel
                 byte[] req_bytes = Encoding.ASCII.GetBytes(request);
                 webRequest.ContentLength = req_bytes.Length;
 
-                Stream strm = webRequest.GetRequestStream();
-                strm.Write(req_bytes, 0, req_bytes.Length);
-                strm.Close();
+                Stream stream = webRequest.GetRequestStream();
+                stream.Write(req_bytes, 0, req_bytes.Length);
+                stream.Close();
 
-                HttpWebResponse resp = (HttpWebResponse)webRequest.GetResponse();
+                HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
                 String json = "";
-                using (Stream respStr = resp.GetResponseStream())
+                using (Stream responseStresm = response.GetResponseStream())
                 {
-                    using (StreamReader rdr = new StreamReader(respStr, Encoding.UTF8))
+                    using (StreamReader streamReader = new StreamReader(responseStresm, Encoding.UTF8))
                     {
                         //should get back a string i can then turn to json and parse for accesstoken
-                        json = rdr.ReadToEnd();
-                        rdr.Close();
+                        json = streamReader.ReadToEnd();
+                        streamReader.Close();
                     }
                 };
 
