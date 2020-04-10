@@ -8,7 +8,7 @@ namespace SpotifyControlPanel.Classes
 {
     public class Users : IUsers
     {
-        public User GetUsers(string userId)
+        public User GetData(string userId)
         {
             User user = new User();
 

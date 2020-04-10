@@ -7,6 +7,6 @@ namespace SpotifyControlPanel.Interfaces
 {
     public interface IUsers
     {
-        User GetUsers(string userId);
+        User GetData(string userId);
     }
 }

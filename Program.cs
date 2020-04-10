@@ -18,14 +18,16 @@ namespace SpotifyControlPanel
             SpotifyAccessToken accessToken = GetConnection();
 
             string chosenCommand = TakeInput();
+            ExecuteCommand(chosenCommand);
         }
 
         public static string TakeInput()
         {
             Console.WriteLine("Enter your spotify command (type help for further commands)");
-            return Console.ReadLine();
-            
+            return Console.ReadLine();            
         }
+
+        public static void ExecuteCommand(string command);
 
         public static SpotifyAccessToken GetConnection()
         {
