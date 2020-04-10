@@ -27,7 +27,10 @@ namespace SpotifyControlPanel
             return Console.ReadLine();            
         }
 
-        public static void ExecuteCommand(string command);
+        public static void ExecuteCommand(string command)
+        {
+
+        }
 
         public static SpotifyAccessToken GetConnection()
         {
